@@ -9,20 +9,18 @@
         <script src="js/lib/angular.min.js" type="text/javascript"></script>
         <script src="js/main.js" type="text/javascript"></script>
         <script src="js/controllers/foto-controller.js" type="text/javascript"></script>
+        <script src="js/directives/minhas-diretivas.js" type="text/javascript"></script>
     </head>
     <body ng-controller="FotoController">
         <div class="container">
             <div class="jumbotron">
                 <h1 class="text-center">Alurapic</h1>
             </div>
-            <div class="panel panel-default col-md-2" ng-repeat="foto in fotos">
-                <div class="panel-heading">
-                    <h3 class="panel-title text-center">{{foto.titulo}}</h3>
-                </div>
+            <meu-painel titulo="{{ foto.titulo }}" ng-repeat="foto in fotos">
                 <div class="panel-body">
-                    <img class="img-responsive center-block" src="{{foto.url}}">
+                    <img class="img-responsive center-block" alt="{{ foto.titulo }}" src="{{foto.url}}">
                 </div><!-- fim panel-body -->
-            </div><!-- fim panel panel-default -->
+            </meu-painel>
         </div><!-- fim container -->        
     </body>
 </html>
