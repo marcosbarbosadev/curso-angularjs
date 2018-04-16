@@ -9,4 +9,15 @@ angular
                 titulo: '@'
             }
         };
+    })
+    .directive('minhaFoto', function() {
+        return {
+            restrict: 'AE',
+            replace: true,
+            template: '<img class="img-responsive center-block" ng-src="{{ url }}" alt="{{ titulo }}">',
+            scope: {
+                url: '@',
+                titulo: '@'
+            }
+        }
     });
