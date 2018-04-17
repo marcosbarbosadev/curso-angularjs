@@ -1,1 +1,43 @@
-<h1>Cadastro</h1>
+<!-- public/partials/foto.html -->
+
+<div class="container">
+    <div class="page-header text-center">
+        <h1>{{foto.titulo}}</h1>
+    </div>
+
+    <div ng-show="flashMsg.sucesso.length" class="alert alert-success" role="alert">{{ flashMsg.sucesso }}</div>
+    <div ng-show="flashMsg.erro.length" class="alert alert-danger" role="alert">{{ flashMsg.erro }}</div>
+
+    <form name="formulario" class="row" ng-submit="submeter()" novalidate>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Título</label>
+                <input name="titulo" class="form-control" ng-model="foto.titulo" required>
+                <span ng-show="formulario.$submitted && formulario.titulo.$error.required" class="form-control alert-danger">
+                    Nome é obrigatório
+                </span>
+            </div>
+            <div class="form-group">
+                <label>URL</label>
+                <input name="url" class="form-control" ng-model="foto.url" required>
+                <span ng-show="formulario.$submitted && formulario.url.$error.required" class="form-control alert-danger">
+                    URL é obrigatória
+                </span>
+            </div>
+            <div class="form-group">
+                <label>Descrição</label>
+                <textarea name="descricao" class="form-control" ng-model="foto.descricao">
+                </textarea>
+            </div>
+    
+            <button type="submit" class="btn btn-primary">
+                Salvar
+            </button>
+             <a href="/" class="btn btn-primary">Voltar</a>
+            <hr>
+        </div>
+        <div class="col-md-6">
+            <minha-foto url="{{ foto.url }}" titulo="{{ foto.titulo }}"></minha-foto>
+        </div>
+    </form>
+</div>
