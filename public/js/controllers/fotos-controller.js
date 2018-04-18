@@ -43,7 +43,7 @@ angular
                         .success(function() {
                             $scope.flashMsg.sucesso = 'Foto cadastrada com sucesso.';
                             $scope.foto = {};
-                            $scope.formulario.$submitted = false;
+                            $scope.formulario.$setPristine();
                         })
                         .error(function(erro) {
                             $scope.flashMsg.erro = 'Não foi possível cadastrar a foto.'

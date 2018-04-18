@@ -20,4 +20,15 @@ angular
                 titulo: '@'
             }
         }
+    })
+    .directive('btnRemover', function() {
+        return {
+            restrict: 'E',
+            replace: true,
+            scope: {
+                nome: '@',
+                acao: '&'
+            },
+            template: '<button class="btn btn-danger btn-block" ng-click="acao(foto)">{{nome}}</button>'
+        }
     });
