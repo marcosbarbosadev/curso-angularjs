@@ -1,6 +1,6 @@
 angular
     .module('alurapic')
-    .controller('FotosController', function($scope, $routeParams, recursoFoto) {
+    .controller('FotosController', function($scope, $routeParams, recursoFoto, cadastroDeFotos) {
 
         $scope.fotos = [];
         $scope.filtro = '';
@@ -31,17 +31,17 @@ angular
   
             if($scope.formulario.$valid) {
 
-                if($routeParams.fotoId) {
-                    $scope.editar($scope.foto);
-                } else {
-                    recursoFoto.save($scope.foto, function() {
-                        $scope.flashMsg.sucesso = 'Foto cadastrada com sucesso.';
+                cadastroDeFotos.cadastrar($scope.foto).then(function(retorno) {
+                    $scope.flashMsg.sucesso = retorno.mensagem;
+                    if(retorno.cadastrar) {
                         $scope.foto = {};
                         $scope.formulario.$setPristine();
-                    }, function(erro) {
-                        $scope.flashMsg.erro = 'Não foi possível cadastrar a foto.'
-                    });
-                }
+                    }
+                })
+                .catch(function(retorno) {
+                    console.log(retorno.mensagem);
+                    $scope.flashMsg.erro = retorno.mensagem
+                });
 
             }
             
